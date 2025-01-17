@@ -16,7 +16,6 @@ const getVideos = async(req,res,next)=>{
       }],
       attributes:['bucket','createdAt','filepath','id','updatedAt','url','user_id','user_uuid','uuid']
     })
-    console.log(videos.dataValues)
     req.data = videos
     next()
   }catch(e){

@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const token = require('authtokenpackage')
+const token = require('@brianbrinkerhoff/authtokenpackage')
 const trackingcontroller = require('../controllers/trackingcontroller')
 const response = require('../middleware/response')
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
-  token.verifyToken,
-  res.render('index', { title: 'Util Sxerver v. 0.1' });
+  res.render('index', { title: 'txtrd Util Server v. 0.1' });
 });
 
 

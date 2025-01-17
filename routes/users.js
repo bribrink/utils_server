@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userscontroller')
-const token = require('../middleware/token')
 const resp = require('../middleware/response')
 const axios = require('../middleware/Axios')
+const token = require('@brianbrinkerhoff/authtokenpackage')
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');

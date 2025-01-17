@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authcontroller')
-const token = require('../middleware/token')
 const response = require('../middleware/response')
+const token = require('@brianbrinkerhoff/authtokenpackage')
+
 
 router.post('/sign-up',
   authController.signUp,

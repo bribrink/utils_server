@@ -3,7 +3,8 @@ const router = express.Router();
 const videocontroller = require('../controllers/videocontroller')
 const videotrackcontroller = require('../controllers/videotrackcontroller')
 const response = require('../middleware/response')
-const token = require('../middleware/token')
+const token = require('@brianbrinkerhoff/authtokenpackage')
+
 
 router.post('/signedurl',
   token.verifyToken,

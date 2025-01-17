@@ -1,8 +1,9 @@
 const express= require('express');
 const router = express.Router();
-const token = require('../middleware/token')
 const likecontroller = require('../controllers/likecontroller')
 const resp = require('../middleware/response')
+const token = require('@brianbrinkerhoff/authtokenpackage')
+
 
 
 router.post('/like',
