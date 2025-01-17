@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@brianbrinkerhoff/authtokenpackage": "file:../AuthTokenPackage",
+    "@brianbrinkerhoff/authtokenpackage": "1.0.3",
     "aws-sdk": "^2.1692.0",
     "axios": "^1.7.9",
     "base58-encode": "^0.2.0",
