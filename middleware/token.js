@@ -7,25 +7,6 @@ const crypto = require("crypto");
 const refreshexpirey = parseInt(REFRESH_TOKEN_LIFE);
 const accessexpirey = parseInt(ACCESS_TOKEN_LIFE);
 
-const generateAuthTokens = async (req, res, next) => {
-  try {
-    const fuuid = crypto.randomUUID();
-    const id = req.user.id
-    const user_uuid = req.user.uuid
-    const expt = Math.floor(Date.now() / 1000) + refreshexpirey
-    req.tokens = await makeTokens(id, fuuid, user_uuid, expt)
-    res.cookie("refreshToken", req.tokens.refresh, {
-      httpOnly: true,
-      secure: !dev,
-      signed: true,
-      //expires: Math.floor(Date.now() / 1000) + (60*3),
-    });
-  } catch (err) {
-    console.log(err)
-    response.error(res, 'Something went wrong', 'FUBAR')
-  }
-  next();
-}
 
 const verifyToken = async (req, res, next) => {
   const authToken = req.get('Authorization');
@@ -71,6 +52,25 @@ const verifyToken = async (req, res, next) => {
   }
 }
 
+const generateAuthTokens = async (req, res, next) => {
+  try {
+    const fuuid = crypto.randomUUID();
+    const id = req.user.id
+    const user_uuid = req.user.uuid
+    const expt = Math.floor(Date.now() / 1000) + refreshexpirey
+    req.tokens = await makeTokens(id, fuuid, user_uuid, expt)
+    res.cookie("refreshToken", req.tokens.refresh, {
+      httpOnly: true,
+      secure: !dev,
+      signed: true,
+      //expires: Math.floor(Date.now() / 1000) + (60*3),
+    });
+  } catch (err) {
+    console.log(err)
+    response.error(res, 'Something went wrong', 'FUBAR')
+  }
+  next();
+}
 //actual tokens get made here, so we can use same logic for gen or re-gen
 //the family uuid can be grabbed from the previoous login
 async function makeTokens(id, fuuid, user_uuid, expt) {

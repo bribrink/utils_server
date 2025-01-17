@@ -11,9 +11,22 @@ const getFiles = async(req,res,next)=>{
     next()
   }catch(e){
     req.error = e
+    next()
+  }
+}
+
+const getAllFiles = async(req,res,next)=>{
+  try{
+    const files = await File.findAll()
+    req.data = files;
+    next()
+  }catch(e){
+    req.error = e
+    next()
   }
 }
 
 module.exports = {
+  getAllFiles,
   getFiles
 }

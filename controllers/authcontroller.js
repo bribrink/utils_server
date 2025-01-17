@@ -4,7 +4,7 @@ const crypto = require('crypto')
 const response = require('../middleware/response')
 const {PASSWORD_SALT } = process.env;
 const token = require('../middleware/token')
-const sendsms = require('../untilz/twiliosend')
+const sendsms = require('../untilz/telnyxsend')
 
 const signUp = async (req, res, next) => {
   const {name, username, email, password} = req.body;

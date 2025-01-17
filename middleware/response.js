@@ -32,7 +32,14 @@ const readbody = (req,res,next) => {
   next()
 }
 
+const ok = (req,res,next)=>{
+  res.sendStatus(200)
+}
+
+
+
 module.exports = {
+  ok,
   data,
   expired,
   error,
