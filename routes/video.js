@@ -18,7 +18,7 @@ router.post('/signedurlusers',
   response.data)
 
 
-router.get('/all',
+router.use('/all',
   token.verifyToken,
   videocontroller.getVideos,
   response.data
