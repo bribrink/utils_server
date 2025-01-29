@@ -3,7 +3,40 @@ const router = express.Router();
 const token = require('@brianbrinkerhoff/authtokenpackage')
 const trackingcontroller = require('../controllers/trackingcontroller')
 const response = require('../middleware/response')
+const Link = require('../models').Link
+const Link_Click = require('../models').Link_Click
 /* GET home page. */
+
+
+
+router.get('/:shortcode', async function(req, res, next) {
+  const { shortcode } = req.params;
+  const ip = req.socket.remoteAddress;
+  console.log(ip)
+  try{
+    const link = await Link.findOne({
+      where:{
+        shortCode:shortcode
+      }
+    })
+    if(!link){
+      throw new Error('No link found')
+    }
+    link.set({
+      clicks:link.get('clicks')+1
+    })
+    link.save();
+    console.log(link.dataValues, link.get('clicks'));
+    const linkC = Link_Click.create({
+      shortCode:shortcode,
+      print: 'dd',
+      ip: req.headers['x-forwarded-for'] || req.socket.remoteAddress
+    })
+    res.redirect(302,link.longUrl);
+  }catch(e){
+    res.send(e.message)
+  }
+});
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'txtrd Util Server v. 0.1' });

@@ -50,6 +50,8 @@ models.Tag = require('./tag')(Sequelize,sequelize);
 models.Rate = require('./rate')(Sequelize,sequelize);
 models.Videotrack = require('./videotrack')(Sequelize,sequelize);
 models.Click = require('./clicks')(Sequelize,sequelize);
+models.Link = require('./link')(Sequelize, sequelize);
+models.Link_Click = require('./link_clicks')(Sequelize,sequelize,models.Link);
 
 const Video = models.Video;
 const User = models.User;
