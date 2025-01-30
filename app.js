@@ -27,8 +27,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 //const whitelist = [ 'http://localhost:3024' , 'https://parentcritic.com']
 
 app.use(cors({
