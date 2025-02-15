@@ -41,7 +41,7 @@ const sequelize = new Sequelize(
 
 models.sequelize = sequelize;
 models.User = require('./user')(Sequelize,sequelize);
-models.Token = require('./tokens')(Sequelize,sequelize);
+// models.Token = require('./tokens')(Sequelize,sequelize);
 models.Video = require('./videos')(Sequelize,sequelize);
 models.File = require('./files')(Sequelize,sequelize);
 models.Like = require('./like')(Sequelize,sequelize);
@@ -58,5 +58,10 @@ const User = models.User;
 
 User.hasMany(Video,{foreignKey:'id'})
 Video.belongsTo(User,{foreignKey:'user_id'})
+
+const Link = models.Link;
+const Link_Clicks = models.Link_Click;
+Link.hasMany(Link_Clicks, {foreignKey:'shortCode'})
+Link_Clicks.belongsTo(Link, {foreignKey:'shortCode'})
 
 module.exports = models

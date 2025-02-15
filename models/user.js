@@ -20,18 +20,11 @@ module.exports = function(Sequelize,sequelize){
                 msg:"Email must be of valid form" }
             }
         },
-        password: {
-            type: Sequelize.STRING
-        },
         uuid:{
             type: Sequelize.UUID
         },
         profilepic: {
             type: Sequelize.STRING
-        },
-        verified: {
-            type:Sequelize.BOOLEAN,
-            default: false
         }
     });
 

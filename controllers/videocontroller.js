@@ -12,7 +12,7 @@ const getVideos = async(req,res,next)=>{
       include:[{
         model:User,
         required: true,
-        attributes:['username', 'profilepic', 'verified']
+        attributes:['username', 'profilepic']
       }],
       attributes:['bucket','createdAt','filepath','id','updatedAt','url','user_id','user_uuid','uuid']
     })

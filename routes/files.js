@@ -21,6 +21,12 @@ router.all('/alll',
   resp.data
 )
 
+router.post('/save',
+  token.verifyToken,
+  filecontroller.saveFile,
+  resp.data
+  )
+
 router.get('/xlsx')
 
 

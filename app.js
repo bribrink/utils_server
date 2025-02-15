@@ -14,6 +14,7 @@ const authRouter = require('./routes/auth');
 const videoRouter = require('./routes/video');
 const fileRouter= require('./routes/files');
 const likeRouter = require('./routes/likes');
+const linkRouter = require('./routes/links');
 const requestlogger = require('./middleware/requestlogger')
 const app = express();
 
@@ -43,6 +44,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/videos', videoRouter);
 app.use('/api/files', fileRouter);
 app.use('/api/like', likeRouter);
+app.use('/api/links', linkRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

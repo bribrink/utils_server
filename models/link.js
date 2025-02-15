@@ -21,6 +21,16 @@ module.exports = function(Sequelize,sequelize){
     link_type: {
       type: Sequelize.STRING,
       default: 'href' //could be qrcode, in-video.. etc.
+    },
+    qrcode_data: {
+      type: Sequelize.TEXT,
+      get(){
+        const rawValue = this.getDataValue('qrcode_data');
+        return JSON.parse(rawValue)
+      },
+      set(value){
+        this.setDataValue('qrcode_data',JSON.stringify(value))
+      }
     }
   });
 

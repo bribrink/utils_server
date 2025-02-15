@@ -2,7 +2,7 @@ const data = (req,res,next)=>{
   if(req.error){
     return res.json({error: {message:req.error.message,code:req.error.code}})
   } else{
-    res.json({data: req.data, tokens: req.tokens || false})
+    res.json({data: req.data, tokens: req.tokens || false, decoded: req.decoded || false})
   }
 }
 

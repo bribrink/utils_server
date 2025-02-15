@@ -22,17 +22,19 @@ router.get('/:shortcode', async function(req, res, next) {
     if(!link){
       throw new Error('No link found')
     }
+    res.redirect(302,link.longUrl);
+    //do this after for speed
     link.set({
       clicks:link.get('clicks')+1
     })
     link.save();
     console.log(link.dataValues, link.get('clicks'));
-    const linkC = Link_Click.create({
+    const linkC = await Link_Click.create({
       shortCode:shortcode,
       print: 'dd',
       ip: req.headers['x-forwarded-for'] || req.socket.remoteAddress
     })
-    res.redirect(302,link.longUrl);
+    console.log(linkC)
   }catch(e){
     res.send(e.message)
   }

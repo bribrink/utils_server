@@ -14,6 +14,10 @@ module.exports = function(Sequelize,sequelize,Link){
         key: 'shortCode'
       }
     },
+    query: {
+      type: Sequelize.STRING,
+      allowNull: true
+    },
     print: {
       type: Sequelize.STRING,
       allowNull: true
