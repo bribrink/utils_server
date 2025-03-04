@@ -49,6 +49,9 @@ router.all('/nrc',async(req,res,next)=>{
   res.send(200)
 })
 
+router.post('/incomming',(req,res,next)=>{
+  res.json(200)
+})
 
 router.post('/clicks',
   trackingcontroller.trackclick,
