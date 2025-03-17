@@ -10,6 +10,9 @@ const Link_Click = require('../models').Link_Click
 
 
 router.get('/:shortcode', async function(req, res, next) {
+  if(req.ip==='34.27.130.113' || req.headers['x-forwarded-for']==='34.27.130.113'){
+    return res.send(404)
+  }
   const { shortcode } = req.params;
   const ip = req.socket.remoteAddress;
   console.log(ip)
