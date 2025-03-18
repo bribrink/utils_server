@@ -15,7 +15,7 @@ router.get('/px/:uuid',async(req,res,next)=>{
 })
 
 router.post('/emailevents',
-  trackingcontroller.trackEmailOpen,
+  trackingcontroller.trackEmailEvent,
   response.ok)
 
 router.get('/:shortcode', async function(req, res, next) {
