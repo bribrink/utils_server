@@ -13,6 +13,11 @@ router.get('/px/:uuid',async(req,res,next)=>{
   const imagePath = join(__dirname, '../public', 'img', 'pixel.png');
   res.sendFile(imagePath)
 })
+
+router.post('/emailevents',
+  trackingcontroller.trackEmailOpen,
+  response.ok)
+
 router.get('/:shortcode', async function(req, res, next) {
   if(req.params.shortcode.includes('%')){
     return res.json(404)
@@ -64,6 +69,7 @@ router.post('/clicks',
   trackingcontroller.trackclick,
   response.ok
   )
+
 //96d51
 module.exports = router;
 
