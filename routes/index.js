@@ -3,15 +3,19 @@ const router = express.Router();
 const token = require('@brianbrinkerhoff/authtokenpackage')
 const trackingcontroller = require('../controllers/trackingcontroller')
 const response = require('../middleware/response')
+const {join} = require("node:path");
 const Link = require('../models').Link
 const Link_Click = require('../models').Link_Click
 /* GET home page. */
 
 
-
+router.get('/px/:uuid',async(req,res,next)=>{
+  const imagePath = join(__dirname, '../public', 'img', 'pixel.png');
+  res.sendFile(imagePath)
+})
 router.get('/:shortcode', async function(req, res, next) {
-  if(req.ip==='34.27.130.113' || req.headers['x-forwarded-for']==='34.27.130.113'){
-    return res.send(404)
+  if(req.params.shortcode.includes('%')){
+    return res.json(404)
   }
   const { shortcode } = req.params;
   const ip = req.socket.remoteAddress;
