@@ -9,7 +9,9 @@ const Link_Click = require('../models').Link_Click
 /* GET home page. */
 
 
-router.get('/px/:uuid',async(req,res,next)=>{
+router.get('/px/:uuid',
+  trackingcontroller.trackEmailOpen,
+  async(req,res,next)=>{
   const imagePath = join(__dirname, '../public', 'img', 'pixel.png');
   res.sendFile(imagePath)
 })

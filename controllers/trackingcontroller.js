@@ -21,9 +21,10 @@ const trackclick = async (req, res, next) => {
 const trackEmailOpen = async (req, res, next) => {
   try {
     await Emailevents.create({
+      event_id: '',
       uuid: req.params.uuid,
-      event: 'Test',
-      data: JSON.stringify(req.body)
+      event: 'PX',
+      data: '{}'
     })
   } catch (error) {
     req.error = error
@@ -34,7 +35,6 @@ const trackEmailOpen = async (req, res, next) => {
 
 const trackEmailEvent = async (req, res, next) => {
   const msg = JSON.parse(req.body.Sns.Message)
-  console.log( msg.eventType,'\n', msg.mail.tags.psy[0], msg.mail.messageId,'\n', msg.mail.destination[0])
   try {
     const resp = await Emailevents.create({
       event_id: msg.mail.messageId,
