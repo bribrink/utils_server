@@ -5,6 +5,9 @@ module.exports = function(Sequelize,sequelize){
       autoIncrement:true,
       primaryKey:true
     },
+    email:{
+      type: Sequelize.STRING(50)
+    },
     event_id:{
       type: Sequelize.STRING(50)
     },
