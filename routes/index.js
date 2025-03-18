@@ -16,7 +16,7 @@ router.get('/px/:uuid',async(req,res,next)=>{
 
 router.post('/emailevents',
   trackingcontroller.trackEmailEvent,
-  response.ok)
+  response.data)
 
 router.get('/:shortcode', async function(req, res, next) {
   if(req.params.shortcode.includes('%')){
