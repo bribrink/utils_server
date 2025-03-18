@@ -6,7 +6,7 @@ module.exports = function(Sequelize,sequelize){
       primaryKey:true
     },
     event_id:{
-      type: Sequelize.String(50)
+      type: Sequelize.STRING(50)
     },
     uuid: {
       type: Sequelize.STRING(50),
