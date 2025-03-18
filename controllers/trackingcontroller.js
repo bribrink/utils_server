@@ -38,6 +38,7 @@ const trackEmailEvent = async (req, res, next) => {
   try {
     const resp = await Emailevents.create({
       event_id: msg.mail.messageId,
+      email: msg.mail.destination[0],
       uuid: msg.mail.tags.psy[0],
       event: msg.eventType,
       data: JSON.stringify(req.body)
