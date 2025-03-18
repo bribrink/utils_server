@@ -10,7 +10,6 @@ module.exports = function(Sequelize,sequelize){
     },
     uuid: {
       type: Sequelize.STRING(50),
-      unique: true
     },
     event: {
       type: Sequelize.STRING(20)
