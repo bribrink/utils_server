@@ -1,7 +1,6 @@
 const sequelize = require('../models').sequelize
 const Click = require('../models').Click;
 const Emailevents = require('../models').Emailevents;
-
 const trackclick = async (req, res, next) => {
   try {
     console.log(req.body)
@@ -42,6 +41,10 @@ const trackEmailEvent = async (req, res, next) => {
       uuid: msg.mail.tags.psy[0],
       event: msg.eventType,
       data: JSON.stringify(req.body)
+    })
+    //this updates the sent-message for tracking open rates, bounces, etc
+    sequelize.query('UPDATE a4l_34275.emailsends SET STATUS = ? WHERE msg_id = ?',{
+      replacements:[msg.eventType, msg.mail.messageId]
     })
     req.data = resp;
   } catch (error) {
